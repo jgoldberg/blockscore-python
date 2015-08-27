@@ -10,9 +10,10 @@ class QuestionSets():
   # '/question_sets' POST
   #
   # verification_id -
-  def create(self, person_id, options = {}):
+  def create(self, person_id, time_limit = 0, options = {}):
     body = options['body'] if 'body' in options else {}
     body['person_id'] = person_id
+    body['time_limit'] = time_limit
 
     response = self.client.post(QUESTION_SET_PATH, body)
     return response
@@ -53,4 +54,3 @@ class QuestionSets():
 
     response = self.client.get(QUESTION_SET_PATH, body)
     return response
-
